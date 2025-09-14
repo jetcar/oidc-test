@@ -9,11 +9,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/", "/oauth2/**").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers("/", "/oauth2/**", "/login/**").permitAll()
+                .requestMatchers("/userinfo").authenticated()
+                .anyRequest().permitAll()
             )
             .oauth2Login(oauth2 -> oauth2
-                .loginPage("/")
+                .loginPage("/userinfo")
             )
             .logout(logout -> logout
                 .logoutSuccessUrl("/")
