@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>User Info</title>
 </head>
 <body>
     <h2>User Info</h2>
     <div>
-        <pre th:text="${user}"></pre>
+        <p><strong>Name:</strong> <span th:text="${user.name}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+        <p><strong>Claims:</strong></p>
+        <pre th:text="${user.claims}"></pre>
     </div>
     <a href="/logout"><button>Logout</button></a>
 </body>

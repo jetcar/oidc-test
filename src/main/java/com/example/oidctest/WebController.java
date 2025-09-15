@@ -6,16 +6,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Map;
+
 @Controller
 public class WebController {
-    @GetMapping("/")
-    public String home() {
-        return "home";
-    }
-
     @GetMapping("/userinfo")
     public String userinfo(Model model, @AuthenticationPrincipal OidcUser oidcUser) {
-        model.addAttribute("user", oidcUser);
+        if (oidcUser != null) {
+            model.addAttribute("user", Map.of(
+                "name", oidcUser.getFullName(),
+                "email", oidcUser.getEmail(),
+                "claims", oidcUser.getClaims()
+            ));
+        }
         return "userinfo";
     }
 }
