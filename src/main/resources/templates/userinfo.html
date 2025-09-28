@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>User Info</title>
 </head>
+
 <body>
     <h2>User Info</h2>
     <div>
-        <p><strong>Name:</strong> <span th:text="${user.name}"></span></p>
-        <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+        <p><strong>first name:</strong> <span th:text="${user.givenname}"></span></p>
+        <p><strong>last name:</strong> <span th:text="${user.surname}"></span></p>
+        <p><strong>personal code:</strong> <span th:text="${user.personal_code}"></span></p>
+        <p><strong>phone number:</strong> <span th:text="${user.phone_number}"></span></p>
+        <p><strong>date of birth:</strong> <span th:text="${user.date_of_birth}"></span></p>
+
         <p><strong>Claims:</strong></p>
         <pre th:text="${user.claims}"></pre>
     </div>
     <a href="/logout"><button>Logout</button></a>
 </body>
+
 </html>

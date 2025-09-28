@@ -13,11 +13,14 @@ public class WebController {
     @GetMapping("/userinfo")
     public String userinfo(Model model, @AuthenticationPrincipal OidcUser oidcUser) {
         if (oidcUser != null) {
-            model.addAttribute("user", Map.of(
-                "name", oidcUser.getFullName(),
-                "email", oidcUser.getEmail(),
-                "claims", oidcUser.getClaims()
-            ));
+            java.util.Map<String, Object> user = new java.util.HashMap<>();
+            user.put("givenname", oidcUser.getClaimAsString("givenname"));
+            user.put("surname", oidcUser.getClaimAsString("surname"));
+            user.put("personal_code", oidcUser.getClaimAsString("sub"));
+            user.put("phone_number", oidcUser.getClaimAsString("phone_number")); // may be null, HashMap allows it
+            user.put("date_of_birth", oidcUser.getClaimAsString("date_of_birth"));
+            user.put("claims", oidcUser.getClaims());
+            model.addAttribute("user", user);
         }
         return "userinfo";
     }
