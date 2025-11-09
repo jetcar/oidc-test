@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>OIDC Test App</title>
+    <script>
+        // Set base dynamically to ensure relative URLs work correctly
+        const base = document.createElement('base');
+        const currentPath = window.location.pathname;
+        // If path doesn't end with /, add it
+        base.href = currentPath.endsWith('/') ? currentPath : currentPath + '/';
+        document.head.appendChild(base);
+    </script>
+</head>
+
+<body>
+    <h2>OIDC Test App</h2>
+    <a href="oauth2/authorization/demo"><button>Login with OIDC</button></a>
+</body>
+
+</html>
