@@ -17,7 +17,7 @@
         <p><strong>Claims:</strong></p>
         <pre th:each="entry : ${user.claims.entrySet()}" th:text="${entry.key + ': ' + entry.value}"></pre>
     </div>
-    <a href="/logout"><button>Logout</button></a>
+    <a href="logout"><button>Logout</button></a>
 </body>
 
 </html>
