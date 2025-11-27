@@ -30,3 +30,7 @@ mvn spring-boot:run
 - Intended for development and integration testing
 - Requires backend and frontend to be running
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
+
